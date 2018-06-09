@@ -5,23 +5,25 @@ from setuptools import (
     setup
 )
 
+
 def parse_requirements(filename):
     """load requirements form a pip requirements file"""
     lineiter = (line.strip() for line in open(filename))
     return [line for line in lineiter if line and not line.startswith("#")]
 
+
 with open(join(dirname(__file__), './VERSION.txt', 'rb')) as f:
     version = f.read().decode('ascii').strip()
 
 setup(
-    name = 'ispyder',  # 模块名称
-    version = version,
+    name='ispyder',  # 模块名称
+    version=version,
     description='Amini spider framework',  # 描述
     author='yeyu.me',
     author_email='[email protected]',
     package_data={'': ['*.*']},
     url='#',
-    install_requires=parse_requirements('requirements.txt')  # 所需的运行环境
+    install_requires=parse_requirements('requirements.txt'),  # 所需的运行环境
     zip_safe=False,
     classifiers=[
         'Programming Language :: Python',
