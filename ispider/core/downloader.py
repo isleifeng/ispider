@@ -4,7 +4,7 @@
 """
 
 import requests
-from ispider.http import Response
+from ispider.http.response import Response
 
 
 class Downloader(object):

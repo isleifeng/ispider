@@ -4,7 +4,7 @@
 一次调用其他组件对外提供的接口, 实现整个框架的运作(驱动)
 """
 
-from ispider.http import Request  # 导入Request对象
+from ispider.http.request import Request  # 导入Request对象
 
 from .scheduler import Scheduler
 from .downloader import Downloader
