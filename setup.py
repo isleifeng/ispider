@@ -18,7 +18,7 @@ with open(join(dirname(__file__), './VERSION.txt', 'rb')) as f:
 setup(
     name='ispyder',  # 模块名称
     version=version,
-    description='Amini spider framework',  # 描述
+    description='mini spider framework, go to www https://www.yeyu.me',  # 描述
     author='yeyu.me',
     author_email='[email protected]',
     package_data={'': ['*.*']},
