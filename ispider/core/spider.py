@@ -1,7 +1,7 @@
 """爬虫组件封装"""
 
-from items import Item  # 导入Item对象
-from http.request import Request  # 导入Request对象
+from ispider.items import Item  # 导入Item对象
+from ispider.http import Request  # 导入Request对象
 
 
 class Spider(object):
