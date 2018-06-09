@@ -11,12 +11,14 @@ from .downloader import Downloader
 from .pipeline import Pipeline
 from .spider import Spider
 
+
 class Engine(object):
     """
     1. 利用init方法初始化其他组件对象, 在内部使用
     2. 实现start方法, 又外部调用, 启动引擎
     3. 实现_start_engine方法, 完成震哥框架的运行逻辑
     """
+
     def __init__(self):
         self.spider = Spider()  # 爬虫对象
         self.scheduler = Scheduler()  # 初始化调度器对象
@@ -37,3 +39,16 @@ class Engine(object):
 
         # 3. 从调度器获取请求对象, 交给下载器发起请求, 获取一个响应对象
         request = self.scheduler.get_request()
+
+        # 4. 利用下载器发起请求
+        response = self.downloader.get_response(request)
+
+        # 5. 利用爬虫的解析响应的方法, 处理响应, 得到结果
+        result = self.spider.parse(response)
+
+        # 6. 判断结果对象
+        # 6.1 如果是请求对象, 那么就再交给调度器
+        if isinstance(result, Request):
+            self.scheduler.add_request(result)
+        else:  # 6.2 否则, 就交给管道处理
+            self.pipeline.process_item(result)
